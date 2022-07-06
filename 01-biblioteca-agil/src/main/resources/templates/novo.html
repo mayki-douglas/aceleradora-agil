@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<!--Tags básicas do head-->
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Incluir</title>
+		<!--Link dos nossos arquivos CSS e JS padrão-->
+		<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+		<script src="js/scripts.js"></script>
+		<!--Link dos arquivos CSS e JS do Bootstrap-->
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+		<script src="../js/bootstrap.min.js"></script>
+		<!--Link do JQuery-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	</head>
+	
+	<body>
+		
+		<div class="container">
+			
+			<!-- CABEÇALHO COM O TÍTULO IDENTIFICANDO QUE SE TRATA DA PÁGINA DE NOVO -->
+			<div class="row">
+				<div class="col-md-12">
+					<h1>INCLUIR NOVO LIVRO</h1>
+				</div>
+			</div>
+			
+			<!-- FORMULÁRIO COM OS CAMPOS PARA EDIÇÃO DO CLIENTE -->
+			<form action="#" th:action="@{/salvar}" th:object="${livro}" method="post">
+				
+				<!-- CAMPOS DO OBJETO -->
+				
+				<!-- Edite o título e o nome do atributo identificador do seu objeto na primeira row -->
+				<div class="row">
+					<div class="col-md-1">id</div>
+					<div class="col-md-5"><input type="text" th:field="*{id}" readonly="readonly"></div>
+				</div>
+				
+				<!-- Deixe uma row por atributo e altere seu título e o seu nome -->
+				<div class="row">
+					<div class="col-md-1">Titulo</div>
+					<div class="col-md-5"><input type="text" th:field="*{titulo}"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-1">Autor</div>
+					<div class="col-md-5"><input type="text" th:field="*{autor}"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-1">Ano</div>
+					<div class="col-md-5"><input type="text" th:field="*{ano}"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-1">Status</div>
+					<div class="col-md-5"><input type="text" th:field="*{status}"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-1">Emprestado para</div>
+					<div class="col-md-5"><input type="text" th:field="*{cliente}"></div>
+				</div>
+<!--				-->
+				<!-- BOTÃO DE SUBMIT QUE CHAMARÁ O SALVAMENTO -->
+				<div class="row">
+					<div class="col-md-1"><button type="submit">Salvar</button></div>
+				</div>
+			
+			</form>
+			
+		</div>
+		
+	</body>
+
+</html>

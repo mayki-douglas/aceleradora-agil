@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<!--Tags básicas do head-->
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cadastro</title>
+		<!--Link dos nossos arquivos CSS e JS padrão-->
+		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+		<script src="js/scripts.js"></script>
+		<!--Link dos arquivos CSS e JS do Bootstrap-->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<script src="js/bootstrap.min.js"></script>
+		<!--Link do JQuery-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	</head>
+	
+	<body>
+		
+		<div class="container">
+			
+			<!-- CABEÇALHO COM O TÍTULO E BOTÃO DE ADICIONAL NOVO -->
+			<div class="row">
+				<div class="col-md-4">
+					<h1>Biblioteca Ágil</h1>
+				</div>
+				<div class="col-md-1">
+					<a href="/novo">
+					<img src="img/add.png" style="height: 40px; padding-top:10px;">
+					</a>
+				</div>
+			</div>
+			
+			<!-- CABEÇALHO COM OS NOMES DOS ATRIBUTOS/CAMPOS DOS OBJETOS -->
+			<!-- Deixe uma coluna por atributo e alterar os seus títulos como desejado -->
+			<div class="row" style="font-weight: bold">
+				<div class="col-md-1">Código</div>
+				<div class="col-md-4">Título</div>
+				<div class="col-md-2">Autor</div>
+				<div class="col-md-1">Ano</div>
+				<div class="col-md-1">Status</div>
+				<div class="col-md-1">Emprestado para</div>
+			</div>
+			
+			
+			<!-- LINHAS PARA CADA UM DOS OBJETOS CADASTRADOS NO BANCO -->
+			<!-- Altere o nome da lista para o mesmo passado no método chamarListar da Controller-->
+			<!-- Deixe uma coluna por atributo e altere seus tamanhos como desejado -->
+			<div th:each="objeto : ${listaLivros}">
+				<div class="row">
+					<div class="col-md-1" th:text="${objeto.id}"></div>
+					<div class="col-md-4" th:text="${objeto.titulo}"></div>
+					<div class="col-md-2" th:text="${objeto.autor}"></div>
+					<div class="col-md-1" th:text="${objeto.ano}"></div>
+					<div class="col-md-1" th:text="${objeto.status}"></div>
+					<div class="col-md-1" th:text="${objeto.cliente}"></div>
+					
+					<!-- OPÇÃO ALTERAR E EXCLUIR DE CADA UM DOS OBJETOS CADASTRADOS NO BANCO -->
+					<!-- Altere o nome do atributo que é o identificador do seu objeto -->
+					
+					<div class="col-md-1">
+						<a th:href="@{'/editar/' + ${objeto.id}}">editar</a>
+					</div>
+					<div class="col-md-1">
+						<a th:href="@{'/excluir/' + ${objeto.id}}">excluir</a>
+					</div>
+				
+				</div>
+			</div>
+			
+		</div>
+		
+	</body>
+
+</html>
